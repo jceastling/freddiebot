@@ -8,14 +8,10 @@ var kiss = CONFIG.kiss
 var util = require('util');
 var ee = require('events').EventEmitter;
 
-var loop = function() {
+var Infiniteloop = function() {
 	ee.call(this);
 	this.args = [];
 };
-
-util.inherits(Infiniteloop, ee);
-
-module.exports = Infiniteloop;
 
 Infiniteloop.prototype.add = function() {
 	if ('function' === typeof arguments[0]) {
@@ -113,7 +109,7 @@ Infiniteloop.prototype.stop = function() {
 		this.emit('error', new Error('You cannot stop a loop before it has been started'));
 	}
 };
-var il = new Loop;
+var il = new Infiniteloop;
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
