@@ -194,4 +194,4 @@ function multiplyCommand(arguments, receivedMessage) {
 // Click on your application -> Bot -> Token -> "Click to Reveal Token"
 
 
-client.login(CONFIG.token)
+client.login(process.env.CLIENT_TOKEN)
