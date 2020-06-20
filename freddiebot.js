@@ -131,7 +131,8 @@ console.log(randomQuote2());
 console.log(randomKiss());
 
 client.on('ready', () => {
-    console.log("Connected as " + client.user.tag)
+    console.log("Connected as " + client.user.tag),
+    client.user.setActivity("with your heart. &HELP for help.")
 })
 
 client.on('message', (receivedMessage) => {
@@ -159,8 +160,11 @@ function processCommand(receivedMessage) {
         receivedMessage.channel.send(randomQuote2())
             } else if (primaryCommand == "kiss") {
         receivedMessage.channel.send(randomKiss())
+    }
+    else if (primaryCommand == "help") {
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &.")
     } else {
-        receivedMessage.channel.send("I don't understand the command. Try `&sing` or `&talk`")
+        receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&help` instead.")
     }
 }
 
