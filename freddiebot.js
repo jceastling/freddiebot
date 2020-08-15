@@ -10,6 +10,12 @@ var interject = CONFIG.interject;
 var interject2 = CONFIG.interject2;
 var endearment = CONFIG.endearment;
 var greeting = CONFIG.greeting;
+var intensifier = CONFIG.intensifier;
+var intensifier2 = CONFIG.intensifier2;
+var react = CONFIG.react;
+var nicething = CONFIG.nicething;
+var adjective = CONFIG.adjective;
+var hearts = CONFIG.hearts;
 var util = require('util');
 var ee = require('events').EventEmitter;
 
@@ -170,6 +176,22 @@ function processCommand(receivedMessage) {
 		var second = greeting[Math.floor(Math.random() * greeting.length)]
 		var third = endearment[Math.floor(Math.random() * endearment.length)]
 		receivedMessage.channel.send(first + ", " + second + ", " + third + "!")
+    } else if (primaryCommand == "compliment") {
+	    var first = interject[Math.floor(Math.random() * interject.length)]
+	    var second = interject2[Math.floor(Math.random() * interject2.length)]
+	    var third = intensifier[Math.floor(Math.random() * intensifier.length)]
+	    var fourth = react[Math.floor(Math.random() * react.length)]
+	    var fifth = adjective[Math.floor(Math.random() * adjective.length)]
+	    var sixth = nicething[Math.floor(Math.random() * nicething.length)]
+	    var seventh = endearment[Math.floor(Math.random() * endearment.length)]
+	    var eighth = intensifier2[Math.floor(Math.random() * intensifier2.length)]
+	    var ninth = hearts[Math.floor(Math.random() * hearts.length)]
+	    var final = ["" + first +", you're just " eighth + sixth + ", " + seventh + ninth",
+			 "Don't you know you're " + eighth + "ly" + fifth + sixth +", " + seventh + "?",
+			 "Let me tell you, you're just the most" + fifth + sixth + "! I'm" + fourth + ninth + "",
+			 "Don't ever forget just how" + third + "ly" + fifth + "you are, you" + third + sixth + ninth + "",
+			 "" + first ", " + second + "you're just" + eighth + sixth + "and that's all there is to it, " + seventh + "!",
+			 "I'm just" + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""];
     } else if (primaryCommand == "help") {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &&.")
     } else {
