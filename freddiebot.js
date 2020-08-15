@@ -135,14 +135,12 @@ client.on('ready', () => {
     client.user.setActivity("with your heart. &&HELP for help.")
 })
 
-const prefix = "&&";
-
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
         return
     }
 
-    if (receivedMessage.content.startsWith(prefix)) {
+    if (receivedMessage.content.startsWith("&&")) {
         processCommand(receivedMessage)
     }
 })
