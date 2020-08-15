@@ -132,7 +132,7 @@ console.log(randomKiss());
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
-    client.user.setActivity("with your heart. &&HELP for help.")
+    client.user.setActivity("with your heart. &HELP for help.")
 })
 
 client.on('message', (receivedMessage) => {
@@ -140,13 +140,13 @@ client.on('message', (receivedMessage) => {
         return
     }
 
-    if (receivedMessage.content.startsWith("&&")) {
+    if (receivedMessage.content.startsWith("&")) {
         processCommand(receivedMessage)
     }
 })
 
 function processCommand(receivedMessage) {
-    let fullCommand = receivedMessage.content.substr(2) // Remove the leading exclamation mark
+    let fullCommand = receivedMessage.content.substr(1) // Remove the leading exclamation mark
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
     let primaryCommand = splitCommand[0] // The first word directly after the exclamation is the command
     let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command
@@ -160,10 +160,11 @@ function processCommand(receivedMessage) {
         receivedMessage.channel.send(randomQuote2())
             } else if (primaryCommand == "kiss") {
         receivedMessage.channel.send(randomKiss())
-    } else if (primaryCommand == "help") {
-        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &&.")
+    }
+    else if (primaryCommand == "help") {
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &.")
     } else {
-        receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&&help` instead.")
+        receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&help` instead.")
     }
 }
 
