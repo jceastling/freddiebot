@@ -6,6 +6,10 @@ var quotes = CONFIG.quotes;
 var quotes2 = CONFIG.quotes2;
 var command = CONFIG.command;
 var kiss = CONFIG.kiss;
+var interject = CONFIG.interject;
+var interject2 = CONFIG.interject2;
+var endearment = CONFIG.endearment;
+var greeting = CONFIG.greeting;
 var util = require('util');
 var ee = require('events').EventEmitter;
 
