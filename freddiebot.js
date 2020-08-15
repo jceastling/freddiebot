@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 var CONFIG = require('./config.json');
+var prefix = CONFIG.prefix;
 var quotes = CONFIG.quotes;
 var quotes2 = CONFIG.quotes2;
 var command = CONFIG.command;
