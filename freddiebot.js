@@ -191,7 +191,8 @@ function processCommand(receivedMessage) {
 			 "Let me tell you, you're just the most" + fifth + sixth + "! I'm" + fourth + ninth + "",
 			 "Don't ever forget just how" + third + "ly" + fifth + "you are, you" + third + sixth + ninth + "",
 			 "" + first + ", " + second + "you're just" + eighth + sixth + "and that's all there is to it, " + seventh + "!",
-			 "I'm just" + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""];
+			 "I'm just" + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""]
+	    receivedMessage.channel.send(final[Math.floor(Math.random() * final.length)])
     } else if (primaryCommand == "help") {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &&.")
     } else {
