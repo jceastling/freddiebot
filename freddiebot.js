@@ -169,7 +169,7 @@ function processCommand(receivedMessage) {
 		var first = interject[Math.floor(Math.random() * interject.length)]
 		var second = greeting[Math.floor(Math.random() * greeting.length)]
 		var third = endearment[Math.floor(Math.random() * endearment.length)]
-		receivedMessage.channel.send(interject + "," + greeting + "," + endearment + "!")
+		receivedMessage.channel.send(first + ", " + second + ", " + third + "!")
     } else if (primaryCommand == "help") {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear, but don't forget to start with &&.")
     } else {
