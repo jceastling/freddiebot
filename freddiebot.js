@@ -1,48 +1,3 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
-var CONFIG = require('./config.json');
-var quotes = CONFIG.quotes;
-var quotes2 = CONFIG.quotes2;
-var command = CONFIG.command;
-var kiss = CONFIG.kiss
-var util = require('util');
-var ee = require('events').EventEmitter;
-
-var Infiniteloop = function() {
-	ee.call(this);
-	this.args = [];
-};
-
-Infiniteloop.prototype.add = function() {
-	if ('function' === typeof arguments[0]) {
-		this.handler = arguments[0];
-		var args = Array.prototype.slice.call(arguments, 1);
-		if (args.length > 0) {
-			this.args = args;
-		}
-	} else {
-		this.emit('error', new Error('when using add function, the first argument should be a function'));
-		return 0;
-	}
-	return this;
-};
-
-Infiniteloop.prototype.run = function() {
-	var handler = this.handler;
-	var args = this.args;
-	var that = this;
-
-	function call() {
-		that._immediateId = setImmediate(function() {
-			if (typeof handler === 'function') {
-
-				switch (args.length) {
-					// fast cases
-					case 0:
-						handler.call(that);
-						that.run();
-						break;
-					case 1:const Discord = require('discord.js')
 const client = new Discord.Client()
 var CONFIG = require('./config.json');
 var quotes = CONFIG.quotes;
@@ -176,7 +131,7 @@ console.log(randomKiss());
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
-    client.user.setActivity("with your heart. &HELP for help.")
+    client.user.setActivity("with your heart. &&HELP for help.")
 })
 
 client.on('message', (receivedMessage) => {
@@ -184,7 +139,7 @@ client.on('message', (receivedMessage) => {
         return
     }
 
-    if (receivedMessage.content.startsWith("&&")) {
+    if (receivedMessage.content.startsWith(prefix)) {
         processCommand(receivedMessage)
     }
 })
