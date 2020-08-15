@@ -3,7 +3,7 @@ var CONFIG = require('./config.json');
 var quotes = CONFIG.quotes;
 var quotes2 = CONFIG.quotes2;
 var command = CONFIG.command;
-var kiss = CONFIG.kiss
+var kiss = CONFIG.kiss;
 var util = require('util');
 var ee = require('events').EventEmitter;
 
