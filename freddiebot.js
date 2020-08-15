@@ -186,8 +186,8 @@ function processCommand(receivedMessage) {
 	    var seventh = endearment[Math.floor(Math.random() * endearment.length)]
 	    var eighth = intensifier2[Math.floor(Math.random() * intensifier2.length)]
 	    var ninth = hearts[Math.floor(Math.random() * hearts.length)]
-	    var final = ["" + first +", you're just " eighth + sixth + ", " + seventh + ninth",
-			 "Don't you know you're " + eighth + "ly" + fifth + sixth +", " + seventh + "?",
+	    var final = ["" + first +", you're just " + eighth + sixth + ", " + seventh + ninth + "",
+			 "Don't you know you're " + eighth + "ly" + fifth + sixth + ", " + seventh + "?",
 			 "Let me tell you, you're just the most" + fifth + sixth + "! I'm" + fourth + ninth + "",
 			 "Don't ever forget just how" + third + "ly" + fifth + "you are, you" + third + sixth + ninth + "",
 			 "" + first ", " + second + "you're just" + eighth + sixth + "and that's all there is to it, " + seventh + "!",
