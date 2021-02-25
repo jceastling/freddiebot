@@ -160,12 +160,6 @@ client.on('message', (receivedMessage) => {
     if (receivedMessage.content.startsWith(&&)) {
         processCommand(receivedMessage)
     }
-    
-    if (message.content === '&&bless') {
-		message.react('??');
-		message.react('??');
-		message.react('??');
-}
 })
 
 function processCommand(receivedMessage) {
