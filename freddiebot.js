@@ -157,7 +157,7 @@ client.on('message', (receivedMessage) => {
         return
     }
 
-    if (receivedMessage.content.startsWith(&&)) {
+    if (receivedMessage.content.startsWith(prefix)) {
         processCommand(receivedMessage)
     }
 })
