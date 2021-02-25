@@ -205,7 +205,7 @@ client.on('message', (receivedMessage) => {
         processCommand(receivedMessage)
     }
     
-    if (message.content === 'Freddie, bless') {
+    if (receivedMessage.content === 'Freddie, bless') {
 		message.react('🌠');
 		message.react('👑');
 		message.react('🚀');
