@@ -172,9 +172,9 @@ function processCommand(receivedMessage) {
     console.log("Arguments: " + arguments) // There may not be any arguments
 
     if (primaryCommand == "sing") {
-        receivedMessage.channel.send(randomQuote())
+        receivedMessage.channel.send(randomLyric())
     } else if (primaryCommand == "talk") {
-        receivedMessage.channel.send(randomQuote2())
+        receivedMessage.channel.send(randomQuote())
             } else if (primaryCommand == "kiss") {
         receivedMessage.channel.send(randomKiss())
     } else if (primaryCommand == "greet") {
