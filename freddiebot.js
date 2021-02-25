@@ -202,12 +202,12 @@ function processCommand(receivedMessage) {
     } else if (primaryCommand == "help") {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! But don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
-	message.react('🌠');
-	message.react('👑');
-	message.react('🚀');
-	message.react('☀️');
-	message.react('🏆');
-	message.react('💖');
+	receivedMessage.react('🌠');
+	receivedMessage.react('👑');
+	receivedMessage.react('🚀');
+	receivedMessage.react('☀️');
+	receivedMessage.react('🏆');
+	receivedMessage.react('💖');
     } else {
         receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&&help` instead.")
     }
