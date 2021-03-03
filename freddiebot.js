@@ -21,6 +21,7 @@ var hearts = CONFIG.hearts;
 var bless = CONFIG.blessing;
 var purify = CONFIG.purify;
 var ward = CONFIG.ward;
+var cat = CONFIG.cat;
 var util = require('util');
 var ee = require('events').EventEmitter;
 
@@ -149,7 +150,7 @@ console.log(randomKiss());
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
-    client.user.setActivity("with your heart. &&HELP for help.")
+    client.user.setActivity("with your heart. &&help for help.")
 })
 
 client.on('message', (receivedMessage) => {
@@ -200,7 +201,7 @@ function processCommand(receivedMessage) {
 			 "I'm just " + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""]
 	    receivedMessage.channel.send(final[Math.floor(Math.random() * final.length)])
     } else if (primaryCommand == "help") {
-        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! But don't forget to start with &&.")
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
 	receivedMessage.react('🌠');
 	receivedMessage.react('👑');
@@ -208,6 +209,8 @@ function processCommand(receivedMessage) {
 	receivedMessage.react('☀️');
 	receivedMessage.react('🏆');
 	receivedMessage.react('💖');
+    } else if (primaryCommand == "meow") {
+	    receivedMessage.channel.send(cat[Math.floor(Math.random() * cat.length)])
     } else {
         receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&&help` instead.")
     }
