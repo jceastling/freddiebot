@@ -22,131 +22,6 @@ var bless = CONFIG.blessing;
 var purify = CONFIG.purify;
 var ward = CONFIG.ward;
 var cat = CONFIG.cat;
-var util = require('util');
-var ee = require('events').EventEmitter;
-
-// Here comes var Infiniteloop. I don't know exactly what it does or how it does it, but it makes something like two-thirds of Freddie's code go.
-var Infiniteloop = function() {
-	ee.call(this);
-	this.args = [];
-};
-
-Infiniteloop.prototype.add = function() {
-	if ('function' === typeof arguments[0]) {
-		this.handler = arguments[0];
-		var args = Array.prototype.slice.call(arguments, 1);
-		if (args.length > 0) {
-			this.args = args;
-		}
-	} else {
-		this.emit('error', new Error('when using add function, the first argument should be a function'));
-		return 0;
-	}
-	return this;
-};
-
-Infiniteloop.prototype.run = function() {
-	var handler = this.handler;
-	var args = this.args;
-	var that = this;
-
-	function call() {
-		that._immediateId = setImmediate(function() {
-			if (typeof handler === 'function') {
-
-				switch (args.length) {
-					// fast cases
-					case 0:
-						handler.call(that);
-						that.run();
-						break;
-					case 1:
-						handler.call(that, args[0]);
-						that.run();
-						break;
-					case 2:
-						handler.call(that, args[0], args[1]);
-						that.run();
-						break;
-						// slower
-					default:
-						handler.apply(that, args);
-						that.run();
-				}
-			} else {
-				//no function added
-				that.emit('error', new Error('no function has been added to Infiniteloop'));
-			}
-		});
-	}
-
-	if (this.interval) {
-		this._timeoutId = setTimeout(function() {
-			call();
-		}, that.interval);
-	} else {
-		call();
-	}
-
-	return this;
-
-};
-
-Infiniteloop.prototype.setInterval = function(interval) {
-	if ('number' === typeof interval && interval > 0) {
-		this.interval = interval;
-	} else {
-		this.emit('error', new Error('Interval should be a number, and must > 0 '));
-	}
-
-	return this;
-};
-
-Infiniteloop.prototype.removeInterval = function() {
-	delete this.interval;
-	return this;
-};
-
-
-Infiniteloop.prototype.onError = function(errHandler) {
-	if ('function' === typeof errHandler) {
-		this.on('error', errHandler);
-	} else {
-		this.emit('error', new Error('You should use a function to handle the error'));
-	}
-	return this;
-};
-
-Infiniteloop.prototype.stop = function() {
-	console.log('timeout id', this._timeoutId);
-	if (this._immediateId !== null && this._timeoutId === null) {
-		clearImmediate(this._immediateId);
-	} else if (this._timeoutId !== null) {
-		clearTimeout(this._timeoutId);
-	} else {
-		this.emit('error', new Error('You cannot stop a loop before it has been started'));
-	}
-};
-var il = new Infiniteloop;
-
-function randomLyric() {
-	return lyric[Math.floor(Math.random() * lyric.length)];
-};
-il.add(randomLyric, []);
-function randomQuote() {
-	return quote[Math.floor(Math.random() * quote.length)];
-};
-il.add(randomQuote,[]);
-function randomKiss() {
-	return kiss[Math.floor(Math.random() * kiss.length)];
-};
-il.add(randomKiss,[]);
-
-il.run();
-
-console.log(randomLyric());
-console.log(randomQuote());
-console.log(randomKiss());
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
@@ -173,11 +48,14 @@ function processCommand(receivedMessage) {
     console.log("Arguments: " + arguments) // There may not be any arguments
 
     if (primaryCommand == "sing") {
-        receivedMessage.channel.send(randomLyric())
+	    var song = lyric[Math.floor(Math.random() * lyric.length)]
+        receivedMessage.channel.send("🎵 " + song + " 🎶)
     } else if (primaryCommand == "talk") {
-        receivedMessage.channel.send(randomQuote())
+		var quote = quote[Math.floor(Math.random() * quote.length)]
+        receivedMessage.channel.send(quote)
             } else if (primaryCommand == "kiss") {
-        receivedMessage.channel.send(randomKiss())
+		    var kiss = kiss[Math.floor(Math.random() * kiss.length)]
+        receivedMessage.channel.send(kiss)
     } else if (primaryCommand == "greet") {
 		var first = interject[Math.floor(Math.random() * interject.length)]
 		var second = greeting[Math.floor(Math.random() * greeting.length)]
