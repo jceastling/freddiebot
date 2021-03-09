@@ -22,6 +22,8 @@ var bless = CONFIG.blessing;
 var purify = CONFIG.purify;
 var ward = CONFIG.ward;
 var cat = CONFIG.cat;
+var util = require('util');
+var ee = require('events').EventEmitter;
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
