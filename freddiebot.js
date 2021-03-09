@@ -53,8 +53,8 @@ function processCommand(receivedMessage) {
 	    var song = lyric[Math.floor(Math.random() * lyric.length)]
         receivedMessage.channel.send("🎵 " + song + " 🎶")
     } else if (primaryCommand == "talk") {
-		var quote = quote[Math.floor(Math.random() * quote.length)]
-        receivedMessage.channel.send(quote)
+		var talk = quote[Math.floor(Math.random() * quote.length)]
+        receivedMessage.channel.send(talk)
             } else if (primaryCommand == "kiss") {
 		    var kiss = kiss[Math.floor(Math.random() * kiss.length)]
         receivedMessage.channel.send(kiss)
