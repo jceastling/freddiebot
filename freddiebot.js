@@ -51,7 +51,7 @@ function processCommand(receivedMessage) {
 
     if (primaryCommand == "sing") {
 	    var song = lyric[Math.floor(Math.random() * lyric.length)]
-        receivedMessage.channel.send("🎵 " + song + " 🎶)
+        receivedMessage.channel.send("🎵 " + song + " 🎶")
     } else if (primaryCommand == "talk") {
 		var quote = quote[Math.floor(Math.random() * quote.length)]
         receivedMessage.channel.send(quote)
