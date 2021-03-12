@@ -91,7 +91,7 @@ function processCommand(receivedMessage) {
 	    receivedMessage.channel.send(cat[Math.floor(Math.random() * cat.length)])
     } else if (primaryCommand == "dice") {
 	    receivedMessage.channel.send("You roll the dice: ");
-	    receivedMessage.channel.send(":" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ": " + ":" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ": " + ":" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ":")
+	    receivedMessage.channel.send(":" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ": " + " :" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ": " + " :" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + ":")
     } else {
         receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&&help` instead.")
     }
