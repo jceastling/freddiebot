@@ -79,7 +79,7 @@ function processCommand(receivedMessage) {
 			 "I'm just " + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""]
 	    receivedMessage.channel.send(final[Math.floor(Math.random() * final.length)])
     } else if (primaryCommand == "help") {
-        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Asking for 'reels' will show you three random emoji. Just don't forget to start with &&.")
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
 	receivedMessage.react('🌠');
 	receivedMessage.react('👑');
@@ -89,8 +89,8 @@ function processCommand(receivedMessage) {
 	receivedMessage.react('💖');
     } else if (primaryCommand == "meow") {
 	    receivedMessage.channel.send(cat[Math.floor(Math.random() * cat.length)])
-    } else if (primaryCommand == "reels") {
-	    receivedMessage.channel.send(randomemoji[Math.floor(Math.random() * randomemoji.length)] randomemoji[Math.floor(Math.random() * randomemoji.length)] randomemoji[Math.floor(Math.random() * randomemoji.length)])
+    } else if (primaryCommand == "dice") {
+	    receivedMessage.channel.send("You roll the dice:" + randomemoji[Math.floor(Math.random() * randomemoji.length)] + randomemoji[Math.floor(Math.random() * randomemoji.length)] + randomemoji[Math.floor(Math.random() * randomemoji.length)])
     } else {
         receivedMessage.channel.send("I haven't a clue what you want, darling. Try `&&help` instead.")
     }
