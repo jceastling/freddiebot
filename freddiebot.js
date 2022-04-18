@@ -82,7 +82,7 @@ function processCommand(receivedMessage) {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
 	receivedMessage.react('🌠');
-	receivedMessage.react('👑');
+	receivedMessage.react(':crown:');
 	receivedMessage.react('🚀');
 	receivedMessage.react('☀️');
 	receivedMessage.react('🏆');
