@@ -49,7 +49,7 @@ function processCommand(receivedMessage) {
 
     if (primaryCommand == "sing") {
 	    var song = lyric[Math.floor(Math.random() * lyric.length)]
-        receivedMessage.channel.send("🎵 " + song + " 🎶")
+        receivedMessage.channel.send(":musical_note: " + song + " :notes:")
     } else if (primaryCommand == "talk") {
 		var talk = quote[Math.floor(Math.random() * quote.length)]
         receivedMessage.channel.send(talk)
@@ -81,12 +81,12 @@ function processCommand(receivedMessage) {
     } else if (primaryCommand == "help") {
         receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
-	receivedMessage.react('🌠');
+	receivedMessage.react('??');
 	receivedMessage.react(':crown:');
-	receivedMessage.react('🚀');
-	receivedMessage.react('☀️');
-	receivedMessage.react('🏆');
-	receivedMessage.react('💖');
+	receivedMessage.react('??');
+	receivedMessage.react('??');
+	receivedMessage.react('??');
+	receivedMessage.react('??');
     } else if (primaryCommand == "meow") {
 	    receivedMessage.channel.send(cat[Math.floor(Math.random() * cat.length)])
     } else if (primaryCommand == "dice") {
