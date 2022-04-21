@@ -3,6 +3,7 @@ const client = new Discord.Client()
 
 // Defining my variables. I think this is important?
 var CONFIG = require('./config.json');
+var CLIENT_TOKEN = CONFIG.token;
 var prefix = CONFIG.prefix;
 var lyric = CONFIG.lyric;
 var quote = CONFIG.quote;
@@ -28,16 +29,16 @@ var ee = require('events').EventEmitter;
 
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag),
-    client.user.setActivity("with your heart. &&help for help.")
+    client.user.setActivity("with your heart. &&help for help.") // Set status
 })
 
 client.on('message', (receivedMessage) => {
-    if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
+    if (receivedMessage.author == client.user) { // Prevent Freddie from responding to his own messages
         return
     }
 
     if (receivedMessage.content.startsWith(prefix)) {
-        processCommand(receivedMessage)
+        processCommand(receivedMessage) // Makes sure Freddie only responds to commands targeted at him
     }
 })
 
@@ -48,7 +49,7 @@ function processCommand(receivedMessage) {
     let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command; this is currently unused functionality
 
     console.log("Command received: " + primaryCommand)
-    console.log("Arguments: " + arguments) // There may not be any arguments
+    console.log("Arguments: " + arguments) // There may not be any arguments (currently all arguments are irrelevant)
 
     if (primaryCommand == "sing") {
 	    var song = lyric[Math.floor(Math.random() * lyric.length)]
@@ -82,7 +83,7 @@ function processCommand(receivedMessage) {
 			 "I'm just " + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""]
 	    receivedMessage.channel.send(final[Math.floor(Math.random() * final.length)])
     } else if (primaryCommand == "help") {
-        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless`, `protect`, or `cleanse` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow`, and for a little magic I will `bless`, `protect`, or `cleanse` whatever you want. Asking for `dice` will show you three random emoji. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
 	var first = bless[Math.floor(Math.random() * bless.length)]
 	var second = bless[Math.floor(Math.random() * bless.length)]
@@ -119,4 +120,4 @@ function processCommand(receivedMessage) {
 // Click on your application -> Bot -> Token -> "Click to Reveal Token"
 
 
-client.login(process.env.CLIENT_TOKEN)
+client.login(CLIENT_TOKEN)
