@@ -20,6 +20,9 @@ var adjective = CONFIG.adjective;
 var hearts = CONFIG.hearts;
 var randomemoji = CONFIG.randomemoji;
 var cat = CONFIG.cat;
+var bless = CONFIG.blessings;
+var protect = CONFIG.protection;
+var cleanse = CONFIG.cleansing;
 var util = require('util');
 var ee = require('events').EventEmitter;
 
@@ -39,10 +42,10 @@ client.on('message', (receivedMessage) => {
 })
 
 function processCommand(receivedMessage) {
-    let fullCommand = receivedMessage.content.substr(2) // Remove the leading exclamation mark
+    let fullCommand = receivedMessage.content.substr(2) // Remove the leading ampersands
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
-    let primaryCommand = splitCommand[0] // The first word directly after the exclamation is the command
-    let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command
+    let primaryCommand = splitCommand[0] // The first word directly after the ampersands is the command
+    let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command; this is currently unused functionality
 
     console.log("Command received: " + primaryCommand)
     console.log("Arguments: " + arguments) // There may not be any arguments
@@ -79,14 +82,28 @@ function processCommand(receivedMessage) {
 			 "I'm just " + third + "ly " + fourth + " by how " + fifth + " you are, you " + sixth + ", you! " + ninth + ""]
 	    receivedMessage.channel.send(final[Math.floor(Math.random() * final.length)])
     } else if (primaryCommand == "help") {
-        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
+        receivedMessage.channel.send("I'll `sing`, `talk`, or give you a `kiss`, dear; I'll `greet` or `compliment` you too! I'll respond with a picture if you `meow` or `bless`, `protect`, or `cleanse` whatever you want. Asking for 'dice' will show you three random emoji. Just don't forget to start with &&.")
 	} else if (primaryCommand == "bless" ) {
-	receivedMessage.react('??');
-	receivedMessage.react(':crown:');
-	receivedMessage.react('??');
-	receivedMessage.react('??');
-	receivedMessage.react('??');
-	receivedMessage.react('??');
+	var first = bless[Math.floor(Math.random() * bless.length)]
+	var second = bless[Math.floor(Math.random() * bless.length)]
+	var third = bless[Math.floor(Math.random() * bless.length)]
+	receivedMessage.react(first);
+	receivedMessage.react(second);
+	receivedMessage.react(third);
+	} else if (primaryCommand == "protect" ) {
+	var first = protect[Math.floor(Math.random() * protect.length)]
+	var second = protect[Math.floor(Math.random() * protect.length)]
+	var third = protect[Math.floor(Math.random() * protect.length)]
+	receivedMessage.react(first);
+	receivedMessage.react(second);
+	receivedMessage.react(third);
+	} else if (primaryCommand == "cleanse" ) {
+	var first = cleanse[Math.floor(Math.random() * cleanse.length)]
+	var second = cleanse[Math.floor(Math.random() * cleanse.length)]
+	var third = cleanse[Math.floor(Math.random() * cleanse.length)]
+	receivedMessage.react(first);
+	receivedMessage.react(second);
+	receivedMessage.react(third);
     } else if (primaryCommand == "meow") {
 	    receivedMessage.channel.send(cat[Math.floor(Math.random() * cat.length)])
     } else if (primaryCommand == "dice") {
