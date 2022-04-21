@@ -1,10 +1,9 @@
-var CONFIG = require('./config.json');
-var quotes = CONFIG.quotes;
-var prefix = CONFIG.prefix;
-var command = CONFIG.command;
+const Discord = require("discord.js");
+const InfiniteLoop = require('infinite-loop');
 
-var InfiniteLoop = require('infinite-loop');
-var il = new InfiniteLoop;
+const {quotes, prefix, command, token} = require('./config.json');
+const il = new InfiniteLoop;
+const bot = new Discord.Client();
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -15,18 +14,17 @@ il.run();
 
 console.log(randomQuote());
 
-var Discord = require("discord.js");
-var bot = new Discord.Client();
 bot.on("message", (message) => {
-  if (message.content.startsWith(prefix command)) {
-    message.channel.sendMessage(randomQuote());
+  if (message.content.startsWith(prefix)) {
+    switch(message.content){
+      case `${prefix}quote`:
+        message.channel.sendMessage(randomQuote());
+      break;
+      case `${prefix}ping`:
+        message.channel.sendMessage("Pong!");
+      break;
+    }
   }
 });
 
-bot.on("message", (message) => {
-  if (message.content.startsWith(prefix "ping")) {
-    message.channel.sendMessage("Pong!");
-  }
-});
-
-bot.login(CONFIG.token);
+bot.login(token);
